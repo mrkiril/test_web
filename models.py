@@ -4,9 +4,9 @@ from flask_login import LoginManager
 import datetime
 
 
-mysql_db = MySQLDatabase('myproject', 
-    user="myprojectuser",
-    password='password' )
+mysql_db = MySQLDatabase('test_project', 
+    user="test_projectuser",
+    password='test_password' )
 
 class BaseModel(Model):
     """A base model that will use our MySQL database"""

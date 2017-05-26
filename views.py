@@ -93,7 +93,6 @@ def logout():
 
 @app.route('/main/')
 def main(): 
-    # A = Y if X else Z
     cur_user = auth_foo(session)
     if type(cur_user) is not Session:
         return cur_user
