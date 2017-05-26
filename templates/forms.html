@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Twitter</title>    
+    <!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>    
+    <script src="/static/js/core_proj.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/blog.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">       
+    <link rel="shortcut icon" href="static/favicon.ico">
+
+</head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Baby don't hurt me</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+                <!--
+                <li class="active"><a href="#">Just Button 1</a></li>
+                <li><a href="#">Just Button 2</a></li>
+                <li><a href="#">Just Button 3</a></li>
+                -->
+            </ul>
+
+            <form class="navbar-form navbar-right" role="search" name="f1" method="post" action="{{ posts.logout }}">
+                <input type="hidden" name="type_post" value="exit">
+                <h4 class="form_margin_inl">{{ posts.user }}</h4>                
+                <button type="submit" class="btn btn-default">Exit</button>
+            </form>
+          
+
+        </div><!-- /.navbar-collapse -->
+
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="blog-header">
+            <h1 class="blog-title">Test project</h1>
+        </div>
+        
+        
+      
+      <div class="row">
+
+        <div class="col-sm-8">
+            <form id="add_user_form" method="post" action="{{ posts.add_user_link }}">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label inl">
+                    <input class="mdl-textfield__input" type="text" name="add_username" id="add_username">
+                    <label class="mdl-textfield__label" for="sample3">username ...</label>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label inl">
+                    <input class="mdl-textfield__input" type="password" name="add_password" id="add_password">
+                    <label class="mdl-textfield__label" type="text">password ...</label>
+                </div>
+
+                
+                <button id="add_new_user_btn" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored inl">
+                <i class="material-icons">add</i>
+                </button>
+                
+                
+            </form>
+
+
+            <div id="list_items">
+                {% for ar in posts.users %}
+                <div class="mdl-list__item" id="list_item_{{ ar.id }}">
+                    <span class="mdl-list__item-primary-content">
+                        <i class="material-icons mdl-list__item-avatar">person</i>
+                        <span>{{ ar.username }}</span>
+                    </span>                    
+                    <a id="{{ ar.id }}" class="mdl-list__item-secondary-action second_elem" href="{{ posts.delete_user }}">
+                        <i class="material-icons">clear</i>
+                    </a>
+                </div>
+                {% endfor %}
+            </div> 
+            
+        </div>
+        <!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>Test progect.</p>
+            <p>Flesk + MySQL+ JS</p>
+            <p>and MDL</p>
+          </div>
+          
+          <div class="sidebar-module">
+            <h4>Click here</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/mrkiril">GitHub</a></li>
+              <li><a href="https://www.facebook.com/kukhelnyi">Facebook</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>Web template built by <a href="https://www.facebook.com/kukhelnyi">mrkiril</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+
+    <div id="temp_list_item" style="display: none">
+        <div id="list_items" >
+            <div class="mdl-list__item" id="list_item_{{ ID }}">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar">person</i>
+                    <span> USERNAME </span>
+                </span>                
+                <a class="mdl-list__item-secondary-action second_elem" href="{{ update_twit }}{{ ID }}"><i class="material-icons">clear</i></a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+</body>
+</html>
