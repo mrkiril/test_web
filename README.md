@@ -5,7 +5,7 @@ cheak that you have install [GIT](https://git-scm.com/)
 
 Of course you must have [MySQL](https://www.mysql.com/) or [MariaDB](https://mariadb.com/resources/blog/how-connect-python-programs-mariadb).
 
-I use  MAriaDB couse it`s opensouse
+I use  MAriaDB couse it`s open souse
 ```gh
 $ sudo apt-get update
 $ sudo apt-get install python-pip python-dev mariadb-server libmariadbclient-dev libssl-dev
@@ -43,3 +43,11 @@ $ pip install -r requirements.txt
 $ python3 manage.py runserver
 
 ```
+in your browser enter 127.0.0.1:5000/
+
+## HOW TO USE IT
+
+Your start page it is login page.
+Of course now you don`t have any account.
+Click to the Register link and create your first account.
+
